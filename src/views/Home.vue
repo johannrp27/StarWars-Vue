@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="grid grid-rows-2 grid-cols-3 gap-4">
+      <div class="text-center bg-gray-400">Characters</div>
+      <div class="text-center bg-gray-400">Planets</div>
+      <div class="text-center bg-gray-400">Fils</div>
+      <div class="text-center bg-gray-400">Species</div>
+      <div class="text-center bg-gray-400">Vehicles</div>
+      <div class="text-center bg-gray-400">Starships</div>
+
+    </div>
+    <!-- <button class="btn " @click="fetchData('Categoria')">Click me</button>
+    {{data}} -->
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
+  components: {  
+  },
+  computed:{
+    ...mapState(['data'])
+  },
+  methods:{
+    ...mapActions(['fetchData'])
+  }  
 }
 </script>
