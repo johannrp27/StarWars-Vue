@@ -1,31 +1,28 @@
 <template>
   <div class="home">
-    <div class="grid grid-rows-2 grid-cols-3 gap-4">
-      <div class="text-center bg-gray-400">Characters</div>
-      <div class="text-center bg-gray-400">Planets</div>
-      <div class="text-center bg-gray-400">Fils</div>
-      <div class="text-center bg-gray-400">Species</div>
-      <div class="text-center bg-gray-400">Vehicles</div>
-      <div class="text-center bg-gray-400">Starships</div>
-
+    <div class="flex flex-row flex-wrap">
+      <router-link :to="url" v-for="({name, url}, i) of categories" :key="i" 
+        class="text-center bg-gray-400 flex-grow p-4 m-3 category-card cursor-pointer text-lg">
+        {{name}}
+      </router-link>
     </div>
-    <!-- <button class="btn " @click="fetchData('Categoria')">Click me</button>
-    {{data}} -->
-
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 export default {
   name: 'Home',
   components: {  
   },
   computed:{
-    ...mapState(['data'])
+    ...mapState(['categories'])
   },
-  methods:{
-    ...mapActions(['fetchData'])
-  }  
 }
 </script>
+
+<style scoped>
+  .category-card{
+    width: 400px;
+  }
+</style>
